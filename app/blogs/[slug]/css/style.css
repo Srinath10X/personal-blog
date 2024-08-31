@@ -1,0 +1,39 @@
+.article {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .hr {
+    margin: 1rem 0;
+    border: 1px solid #cdd6f480;
+  }
+
+  p,
+  h2,
+  img {
+    margin: 1rem 0;
+  }
+
+  p {
+    font-weight: 450;
+    font-size: 1.1rem;
+  }
+
+  pre {
+    background: #313244;
+    border-radius: 0.2rem;
+    padding: 1rem;
+    font-size: 1.01rem;
+  }
+}
+
+.article img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0.2rem;
+}
