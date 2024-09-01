@@ -3,6 +3,12 @@
 :root {
   --white-theme: #cdd6f4;
   --dark-theme: #181825;
+
+  --text: #cdd6f4;
+  --subtext1: #bac2de;
+  --subtext2: #a6adc8;
+
+  --c-blue: #89b4fa;
   --spacing-sync: 3%;
 
   line-height: 1.5;
@@ -21,7 +27,7 @@
 
 html,
 body {
-  max-height: 400vh;
+  max-height: 2000vh;
   max-width: 100%;
   overflow: auto;
   background: var(--dark-theme);

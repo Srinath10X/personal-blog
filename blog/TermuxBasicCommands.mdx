@@ -1,0 +1,125 @@
+--- 
+title: Termux basic commands
+date: 1 September 2024
+description:  termux basic commands for absolute beginners 
+--- 
+
+Termux is a great tool that allows us to run linux tools on android which is my go to recommendation to someone who want to learn linux,programming but dosen't have any laptop/desktop and still has a burning desire to learn something but stuck at using this amazing application.
+
+![termux-setup](https://github.com/Srinath10X/termux-setup/blob/main/.github/assets/termux-setup.jpg?raw=true)
+*for those of you who are wondering about my termux-setup. You can find more about it here [link](https://github.com/Srinath10X/termux-setup)*
+
+> Note: Before we dive deeper. I want you to know that learning a programming language or any other topic is about understanding the key concepts and practicing them. You don't need to know everything and no one does. Focus on building a solid foundation, solving problems, and expanding your knowledge step by step 
+
+## Updating,Upgrading and Installing packages
+We can update packages in termux using the following command
+```bash
+apt update
+```
+> Note: You have to update,upgrade and then update to install packages in termux for some reason there is another update step. The upgrade step is below the installation section
+
+To install any package/packages in termux we use 
+```bash
+apt install <package-name> <another-package> <another-package> ...
+```
+we can pass `-y` flag to skip the yes or no confirmation while installing 
+
+For example:
+```bash
+apt install neovim -y
+```
+For upgrading packages we can use the following command and I have skipped the yes/no confirmation using `-y` flag at the end
+```bash
+apt upgrade -y
+```
+but this will not work as you expected while running first time it asks alot of confirmations so to address this problem I generally use this below command instead
+```bash
+yes | apt upgrade
+```
+So I have piped `yes` to the `apt upgrade` command so that it will saves sometime and effort.
+
+I generally update and upgrade packages in termux with this single command
+```bash
+apt update && yes | apt upgrade 
+```
+## Navigating,Managing Files and Directories
+
+To know in which directory/folder you are in you can type the following command
+
+```bash
+pwd
+```
+> Note: Most people who are new to programming dosen't understand the term <u>**directory**</u>. It means folder.
+
+Which results in showing this path
+```bash
+/data/data/com.termux/files/home
+```
+by default when you open termux you are presented with the `~` sign on the left side of the prompt which indicates that you are in the home folder 
+![termux-img](https://github.com/Srinath10X/personal-blog/blob/assets/Blog/termux/pwd.png?raw=true)
+
+Now you know that you are in the home directory/folder lets create file 
+```bash
+touch <file-name.extension>
+```
+Example: 
+```bash
+touch index.html
+```
+Great you have created a file but how do you know is it created or not. On Linux/macOs/Termux or any other unix like systems we have a command called `ls` to list the files and directories/folders in the current directory/folder
+```bash
+ls
+```
+You can able to see the file that we have created
+
+we can also pass some arguments like `-a` to get the hidden/dotfiles which start with`.`
+```bash
+ls -a
+```
+![ls](https://github.com/Srinath10X/personal-blog/blob/assets/Blog/termux/create-file.png?raw=true)
+Now the whole screen is a little bit messy we can clear the terminal by using `clear` command or `ctrl+l` shortcut
+
+We have created an index.html file but there is nothing in that file to insert data/text into that file we use a terminal-text editor tools like `nano`,`vim`(btw I use neovim) to edit that file. I personally use neovim as my primary text-editor/ide. I will open the file with neovim by typing `nvim index.html` and adding some data 
+![neovim-image](https://github.com/Srinath10X/personal-blog/blob/assets/Blog/termux/neovim-coding-html.png?raw=true)
+
+To see what inside a specific file we don't need to use an editor we can also use a program called `cat` 
+```bash
+cat file-name
+```
+Example:
+```bash
+cat index.html
+```
+![cat-html](https://github.com/Srinath10X/personal-blog/blob/assets/Blog/termux/cat-html.png?raw=true)
+As we write more programs the home folder gonna be messy we can organize the home directory by creating directories/folders for different usecases
+
+So to create a folder in Termux we use command `mkdir <folder-name>` and to delete `rmdir <folder-name>`
+![folder](https://github.com/Srinath10X/personal-blog/blob/assets/Blog/termux/mkdir.png?raw=true)
+
+So lets create a folder name web by `mkdir web` and to change the directory (I mean to enter into the directory that we have created ).We use `cd` command 
+```bash
+cd <folder-name>
+```
+To navigate back a level from that folder we use 
+```bash
+cd ..
+```
+for multiple levels we use `cd ../../..`. So we have created a folder named web let again go to that folder by typing `cd web` and then I will create a file named `index.html` or any other file of you choice it may be `main.cpp` or `main.py` as of your choice
+
+> Note: I am showing this `index.html` as an example to organize the folders.
+Okay how can we copy files and directories from one path to another path
+
+We have a command called `cp` to copy files to a specified path `cp <file-name> <path>`
+```bash
+cp index.html web/
+```
+> Note: we can use `/` or we can leave it 
+
+The above command is copying the index.html file to the web/ directory 
+So we have copied the index.html file into the web directory we can check that by running `ls web/`
+![cp-command](https://github.com/Srinath10X/personal-blog/blob/assets/Blog/termux/cp-command.png?raw=true)
+Now we know that how to copy a file into a directory but how can we copy a directory to another directory we can archive that by adding `-r`flag to the cp command `cp -r <folder-name> <path-to-another-folder>`. First I will create an empty directory in the home directory by typing `mkdir empty` and copy that empty directory into web directory by typing
+```bash
+cp -r empty web
+```
+And the last and final command in this list is `mv` we can move instead of copying the command 
